@@ -31,6 +31,8 @@ This project uses an RC controller to trigger a confetti sprayer attachment moun
 5. Connect the 28BYJ-48 stepper motor to the ULN2003A driver output.
 6. Power the driver from the Arduino's 5V and GND pins.
 
+![circuit](circuit_diagram.png)
+
 ## Assembling the Disc Mechanism
 
 1. Insert the inner disc into the container.
