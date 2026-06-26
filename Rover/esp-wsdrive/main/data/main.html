@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ESP WS Drive</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="stylesheet" type="text/css" href="/style.css">
+    </head>
+    <body>
+        <main>
+            <div id="settings-holder">
+                <button id="settings-button">Open Settings</button>
+                <div id="input-method" style="visibility: hidden;">
+                    <button id="current-to-default">Current Input Default</button>
+                    <button id="all-to-default">All Input Default</button>
+                    <select name="settings" id="settings">
+                        <option value="pitch_roll_yaw">Pitch-Roll Joystick and Yaw Joystick</option>
+                        <option value="pitch_roll">Pitch-Roll Joystick</option>
+                        <option value="pitch_yaw">Pitch-Yaw Joystick</option>
+                        <option value="d_pad">D-Pad</option>
+                    </select>
+                </div>
+            </div>
+        
+            <div id="drawing-container"></div>
+        </main>
+            
+        <script>
+          let movement_values = {
+            pitch: 0,
+            roll: 0,
+            yaw: 0
+          }
+        </script>
+        <script type='module' src="drawing.js"></script>
+        <script src="websocket.js"></script>
+    </body>
+</html>

@@ -1,0 +1,48 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    /* Use svh (Small Viewport Height) to account for the address bar always being visible */
+    height: 100svh; 
+    overflow: hidden;
+    /* Disables pull-to-refresh and glow effects */
+    overscroll-behavior: none; 
+    /* Prevents the user from accidentally selecting text while dragging */
+    user-select: none; 
+    -webkit-user-select: none;
+}
+
+main {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+}
+
+#settings-holder {
+    z-index: 3;
+    background: transparent;
+}
+
+#input-method {
+    display: inline;
+}
+
+#drawing-container {
+    z-index: 2;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+canvas {
+    position: absolute;
+}
+
+#drawing-container > button {
+  all: unset;
+  cursor: pointer; /* Restores the clickable hand icon */
+  background-color: "purple";
+}
