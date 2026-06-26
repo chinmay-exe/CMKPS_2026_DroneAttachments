@@ -1,13 +1,13 @@
 // ── Pin definitions ──────────────────────────────────────────
-#define IN1 8
-#define IN2 9
-#define IN3 10
-#define IN4 11
-#define PWM_PIN 2
+#define IN1 8 //Stepper
+#define IN2 9 //Stepper
+#define IN3 10 //Stepper
+#define IN4 11 //Stepper
+#define PWM_PIN 2 // Pixhawk AUX3
 
 // ── Stepper config ───────────────────────────────────────────
 const int STEPS_PER_REV = 2048;
-const int STEPS_90      = STEPS_PER_REV / 2;  // 512 steps = 90°
+const int STEPS_90      = STEPS_PER_REV / 2;  // 512 steps = 90°  // max rotation allowed is 90
 
 // Half-step sequence for 28BYJ-48
 const int stepSequence[8][4] = {
@@ -50,7 +50,9 @@ void rotate(int steps, int direction) {
 
 // ── Read Pixhawk PWM pulse width (µs) ────────────────────────
 unsigned long readPWM() {
-  return pulseIn(PWM_PIN, HIGH, 25000UL);
+  return pulseIn(PWM_PIN, HIGH, 25000UL); // This line of code reads a pulse length in microseconds on a specified pin,
+  //actively pausing your program until the signal changes or it hits a time limit.
+  //It is frequently used to decode signals from RC receivers (PWM) or read distances from ultrasonic sensors
 }
 
 void setup() {
@@ -70,7 +72,7 @@ void loop() {
   // VRB right = high PWM > 1700
   // VRB left  = low PWM < 1300
   bool switchHigh = (pw > 1700);
-  bool switchLow  = (pw > 100 && pw < 1300);
+  bool switchLow  = (pw > 100 && pw < 1300); //need to test pw > 100
 
   // VRB turned right → rotate anticlockwise (only if at base)
   if (switchHigh && motorAtBase) {
